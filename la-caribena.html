@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Caribeña · Panadería, Pastelería y Exquisiteces</title>
+  <meta name="description" content="Panadería, Pastelería y Exquisiteces La Caribeña, C.A. Mira el menú, el horario y cómo llegar.">
+  <link rel="icon" type="image/svg+xml" href="la-caribena-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --noche:#14100C; --carbon:#211A13; --ambar:#F5B72D; --crema:#FFF4DC; --linea:rgba(255,244,220,.16); }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:72px; }
+    body { margin:0; font:1.0625rem/1.65 "Inter",system-ui,sans-serif; background:var(--noche); color:var(--crema); }
+    img { max-width:100%; display:block; }
+    a { color:inherit; }
+    :focus-visible { outline:3px solid var(--ambar); outline-offset:3px; border-radius:6px; }
+    h1,h2,h3 { font-family:"Space Grotesk",system-ui,sans-serif; text-transform:uppercase; letter-spacing:-.03em; line-height:1; margin:0 0 .5em; }
+    h1 { font-size:clamp(2.4rem,9vw,5rem); font-weight:700; }
+    h2 { font-size:clamp(1.9rem,6vw,3rem); font-weight:700; }
+    h3 { font-size:1.15rem; font-weight:700; letter-spacing:-.01em; }
+    p { margin:0 0 1em; max-width:58ch; }
+    .wrap { width:min(1160px,100% - 2.5rem); margin-inline:auto; }
+    .amb { color:var(--ambar); }
+    .btn { display:inline-flex; align-items:center; gap:.5em; padding:.8em 1.5em; border:2px solid var(--ambar); border-radius:999px; background:var(--ambar); color:var(--noche); font:600 1rem "Inter",sans-serif; text-decoration:none; transition:transform .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn.out { background:transparent; color:var(--crema); }
+    .btn.sm { padding:.5em 1.1em; font-size:.92rem; }
+    svg.i { width:28px; height:28px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+
+    .aviso { background:var(--ambar); color:var(--noche); font-size:.88rem; padding:.5rem 0; }
+    .aviso .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.3rem 1rem; }
+    .aviso a { font-weight:600; }
+    header.top { position:sticky; top:0; z-index:10; background:var(--noche); border-bottom:1px solid var(--linea); }
+    .bar { display:flex; align-items:center; justify-content:space-between; min-height:68px; gap:1rem; }
+    .marca { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+    .marca img { width:40px; height:40px; }
+    .marca b { display:block; font:700 1.25rem "Space Grotesk",sans-serif; text-transform:uppercase; letter-spacing:-.02em; line-height:1; }
+    .marca small { display:block; font-size:.72rem; opacity:.7; line-height:1.3; }
+    nav.principal { display:none; gap:1.75rem; font-size:.95rem; }
+    nav.principal a { text-decoration:none; }
+    nav.principal a:hover { color:var(--ambar); }
+
+    .hero { padding:2.5rem 0 3.5rem; display:grid; gap:2rem; align-items:center; }
+    .hero .lead { font-size:1.15rem; opacity:.9; }
+    .acc { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .hero-img { position:relative; border-radius:28px; overflow:hidden; border:1px solid var(--linea); }
+    .hero-img img { width:100%; height:100%; min-height:260px; object-fit:cover; }
+    .hero-img::after { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(20,16,12,.55),transparent 55%); }
+
+    .rapida { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--linea); border:1px solid var(--linea); border-radius:var(--r,20px); overflow:hidden; border-radius:20px; }
+    .rapida li { list-style:none; background:var(--carbon); padding:1.2rem .8rem; text-align:center; font:500 .92rem "Space Grotesk",sans-serif; }
+    .rapida svg { margin:0 auto .5rem; color:var(--ambar); }
+    .rapida ul { display:contents; margin:0; padding:0; }
+
+    .sec { padding:4rem 0; }
+    .sub { opacity:.75; margin-bottom:2rem; }
+    .cards { display:grid; gap:1.25rem; }
+    .plato { background:var(--carbon); border:1px solid var(--linea); border-radius:22px; overflow:hidden; }
+    .plato img, .plato .ph { width:100%; height:220px; object-fit:cover; }
+    .ph { background:var(--ambar); color:var(--noche); display:grid; place-content:center; }
+    .ph svg { width:72px; height:72px; stroke-width:1.5; }
+    .plato .row { padding:1.25rem; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+    .plato h3 { margin-bottom:.3rem; }
+    .plato p { margin:0; font-size:.92rem; opacity:.75; }
+    .plato b { font:700 1.3rem "Space Grotesk",sans-serif; color:var(--ambar); white-space:nowrap; }
+
+    .promo { background:var(--ambar); color:var(--noche); border-radius:28px; padding:2rem 1.5rem; display:grid; gap:1.25rem; align-items:center; }
+    .promo h2 { margin:0; }
+    .promo p { margin:0; font-weight:500; }
+    .codigo { display:inline-block; margin-top:.8rem; padding:.35em 1em; border:2px dashed var(--noche); border-radius:999px; font:700 .95rem "Space Grotesk",sans-serif; letter-spacing:.04em; }
+    .promo .btn { background:var(--noche); color:var(--crema); border-color:var(--noche); justify-self:start; }
+
+    .info { display:grid; gap:1.25rem; }
+    .info .foto { border-radius:22px; width:100%; height:100%; min-height:240px; object-fit:cover; }
+    .info .caja { background:var(--carbon); border:1px solid var(--linea); border-radius:22px; padding:1.75rem; }
+    .info h3 { color:var(--ambar); }
+    .info p { margin:0 0 1rem; }
+
+    footer.pie { border-top:1px solid var(--linea); padding:2.5rem 0 1.5rem; background:var(--carbon); }
+    .pie .cols { display:grid; gap:1.5rem; }
+    .pie nav, .pie .c { display:flex; flex-direction:column; gap:.4rem; font-size:.95rem; }
+    .pie a:hover { color:var(--ambar); }
+    .pie .legal { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--linea); font-size:.85rem; opacity:.7; }
+
+    @media (min-width:760px) {
+      nav.principal { display:flex; }
+      .hero { grid-template-columns:1.05fr 1fr; padding:4rem 0 5rem; }
+      .rapida { grid-template-columns:repeat(4,1fr); }
+      .cards { grid-template-columns:repeat(2,1fr); }
+      .promo { grid-template-columns:1.4fr 1fr; padding:2.75rem 3rem; }
+      .promo .btn { justify-self:end; }
+      .info { grid-template-columns:1.1fr 1fr; }
+      .pie .cols { grid-template-columns:1.6fr 1fr 1fr; }
+    }
+    @media (min-width:1000px) { .cards { grid-template-columns:repeat(4,1fr); } }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} *{transition:none!important;} }
+  </style>
+</head>
+<body>
+
+<div class="aviso"><div class="wrap"><span>Sitio creado por Brote Studio.</span><a href="index.html#proyectos">Volver al portafolio</a></div></div>
+
+<header class="top" id="inicio">
+  <div class="wrap bar">
+    <a class="marca" href="#inicio"><img src="la-caribena-logo.svg" alt="" width="40" height="40"><span><b>La Caribeña</b><small>Panadería y pastelería</small></span></a>
+    <nav class="principal" aria-label="Principal"><a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+    <a class="btn sm" href="https://wa.me/584120844355?text=Hola%20La%20Caribe%C3%B1a%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Pedir</a>
+  </div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="pan" viewBox="0 0 24 24"><path d="M4 15c0-4 3-7 8-7s8 3 8 7c0 1.5-1 2.5-2.5 2.5h-11C5 17.5 4 16.5 4 15z"/><path d="M9 12l1.5 3M13 11.5l1.5 3"/></symbol>
+  <symbol id="piz" viewBox="0 0 24 24"><path d="M3 6c5-3 13-3 18 0L12 21z"/><circle cx="10" cy="9" r="1"/><circle cx="14" cy="11" r="1"/><circle cx="12" cy="15" r="1"/></symbol>
+  <symbol id="tor" viewBox="0 0 24 24"><path d="M5 12h14l-1.5 8h-11z"/><path d="M6 12a6 5 0 0 1 12 0"/><path d="M12 7V4"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A9 9 0 1 1 8 19.6L3 21z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-.9.8c-.9-.4-1.7-1.2-2.1-2.1l.8-.9-1-2L9 8.5z"/></symbol>
+</svg>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Pan caliente,<br><span class="amb">todo el día.</span></h1>
+      <p class="lead">Panadería, pastelería y exquisiteces hechas cada mañana. Mira el menú, pide por WhatsApp o pasa a visitarnos.</p>
+      <div class="acc">
+        <a href="#menu" class="btn">Ver el menú</a>
+        <a href="#visitanos" class="btn out">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="hero-img"><img src="panes.jpg" alt="Panes artesanales recién horneados sobre bandejas" width="588" height="424"></div>
+  </section>
+
+  <section class="wrap" aria-label="Lo que ofrecemos">
+    <div class="rapida"><ul>
+      <li><svg class="i"><use href="#pan"/></svg>Pan recién horneado</li>
+      <li><svg class="i"><use href="#piz"/></svg>Pizza al horno</li>
+      <li><svg class="i"><use href="#tor"/></svg>Pastelería del día</li>
+      <li><svg class="i"><use href="#chat"/></svg>Pedidos por WhatsApp</li>
+    </ul></div>
+  </section>
+
+  <section class="wrap sec" id="menu">
+    <h2>Creaciones <span class="amb">de la casa</span></h2>
+    <p class="sub">Lo que más se pide en el mostrador.</p>
+    <!-- TODO: confirma nombres y precios reales -->
+    <div class="cards">
+      <article class="plato"><img src="panes.jpg" alt="Pan artesanal de la casa" loading="lazy" width="588" height="424"><div class="row"><div><h3>Pan artesanal</h3><p>Corteza dorada, recién horneado.</p></div><b>$3</b></div></article>
+      <article class="plato"><img src="pizza.jpg" alt="Pizza con jamón, maíz y pimentón" loading="lazy" width="588" height="399"><div class="row"><div><h3>Pizza de la casa</h3><p>Jamón, maíz, tomate y pimentón.</p></div><b>$8</b></div></article>
+      <article class="plato"><div class="ph"><svg class="i"><use href="#tor"/></svg></div><div class="row"><div><h3>Pastelería del día</h3><p>Tortas y postres frescos.</p></div><b>$2.5</b></div></article>
+      <article class="plato"><div class="ph"><svg class="i"><use href="#pan"/></svg></div><div class="row"><div><h3>Exquisiteces</h3><p>Pregunta por las de hoy.</p></div><b>Consulta</b></div></article>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="ofertas">
+    <!-- TODO: promo inventada de ejemplo; cámbiala o quítala -->
+    <div class="promo">
+      <div>
+        <h2>Combo de la casa</h2>
+        <p>Pan artesanal + pizza de la casa a un precio especial, todos los fines de semana.</p>
+        <span class="codigo">CÓDIGO: CARIBEÑA</span>
+      </div>
+      <a class="btn" href="https://wa.me/584120844355?text=Hola%2C%20quiero%20el%20combo%20de%20la%20casa%20(c%C3%B3digo%20CARIBE%C3%91A)" target="_blank" rel="noopener">Pedir el combo</a>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="visitanos">
+    <h2>Visítanos <span class="amb">o pide fácil</span></h2>
+    <div class="info">
+      <img class="foto" src="fachada.jpg" alt="Fachada de La Caribeña de noche, con el letrero iluminado" loading="lazy" width="828" height="454">
+      <div class="caja">
+        <h3>Horario</h3>
+        <!-- TODO: confirma si abren los domingos -->
+        <p>Lunes a sábado: 7 a. m. a 9 p. m.</p>
+        <h3>Pedidos</h3>
+        <p>Escríbenos con lo que quieres y la hora de retiro.</p>
+        <p><a class="btn sm" href="https://wa.me/584120844355?text=Hola%20La%20Caribe%C3%B1a%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Pedir por WhatsApp</a></p>
+        <h3>Dónde estamos</h3>
+        <p><a class="btn sm out" href="https://maps.app.goo.gl/sNRq5G8e1ASPJJWS6" target="_blank" rel="noopener">Ver en el mapa</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="marca" href="#inicio"><img src="la-caribena-logo.svg" alt="" width="40" height="40"><span><b>La Caribeña</b><small>Panadería, Pastelería y Exquisiteces</small></span></a></div>
+      <nav aria-label="Pie de página"><a href="#menu">Menú</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+      <div class="c"><a href="https://wa.me/584120844355" target="_blank" rel="noopener">WhatsApp</a><a href="https://maps.app.goo.gl/sNRq5G8e1ASPJJWS6" target="_blank" rel="noopener">Mapa</a></div>
+    </div>
+    <p class="legal">Panadería, Pastelería y Exquisiteces La Caribeña, C.A. Diseño y desarrollo: <a href="index.html">Brote Studio</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
