@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brote Studio · Sitios web que nacen y crecen contigo</title>
-  <meta name="description" content="Brote Studio crea sitios web con temática propia, pensados para nacer simples y crecer contigo.">
+  <meta name="description" content="Brote Studio crea sitios web para negocios y emprendimientos: comida, ropa, calzado y más.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +16,7 @@
 <header class="site-header" id="top">
   <div class="wrap bar">
     <a href="#inicio" class="logo"><img src="logo.png" alt="" width="30" height="32"><span>Brote Studio</span></a>
-    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
-      <span></span><span></span>
-    </button>
+    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <nav id="menu" class="menu" aria-label="Principal">
       <a href="#inicio">Inicio</a>
       <a href="#proyectos">Proyectos</a>
@@ -34,128 +32,132 @@
   <!-- INICIO -->
   <section class="hero" id="inicio">
     <div class="wrap hero-grid">
-      <div class="hero-text">
-        <h1>Sitios web que nacen y crecen contigo</h1>
-        <p class="lead">Diseño y programo sitios con identidad propia: simples al empezar, listos para crecer cuando tu proyecto lo necesite.</p>
+      <div>
+        <h1><span class="line">Sitios web que</span> <span class="line">nacen y crecen</span> <span class="line">contigo.</span></h1>
+        <p class="lead">Creo sitios web para negocios y emprendimientos de comida, ropa, calzado y más. Con tu estilo y listos para vender.</p>
         <div class="actions">
-          <a href="#proyectos" class="btn">Ver proyectos</a>
+          <a href="#proyectos" class="btn">Ver proyectos <span class="arrow" aria-hidden="true">↗</span></a>
           <a href="#contacto" class="btn btn-ghost">Contarme tu idea</a>
         </div>
       </div>
-
-      <!-- El brote crece una sola vez al cargar la página -->
-      <svg class="sprout" viewBox="0 0 240 280" role="img" aria-label="Un brote verde que crece desde la tierra">
-        <ellipse class="soil" cx="120" cy="262" rx="78" ry="12"/>
-        <path class="stem" d="M120 258 C120 200 118 150 122 96"/>
-        <path class="leaf l1" d="M120 190 C80 190 52 164 48 126 C88 124 118 148 120 190Z"/>
-        <path class="leaf l2" d="M121 150 C160 150 190 126 194 88 C154 86 123 110 121 150Z"/>
-        <path class="leaf l3" d="M122 98 C98 84 94 52 112 26 C140 40 142 74 122 98Z"/>
-      </svg>
+      <div class="hero-art" aria-hidden="true"><img src="logo-grande.png" alt="" width="520" height="550"></div>
     </div>
+  </section>
+
+  <!-- Franja de valores -->
+  <section class="strip" aria-label="Lo que incluye cada sitio">
+    <ul class="wrap">
+      <li>Diseño a medida</li>
+      <li>Carga rápida</li>
+      <li>Hecho para móvil</li>
+      <li>Publicado en línea</li>
+    </ul>
   </section>
 
   <!-- PROYECTOS -->
   <section class="section" id="proyectos">
     <div class="wrap">
-      <h2>Proyectos</h2>
-      <p class="section-intro">Una selección de sitios que ayudé a poner en marcha.</p>
-
-      <!-- TODO: reemplaza título, descripción y etiquetas por tus proyectos reales (temática PENDIENTE). -->
+      <div class="head">
+        <h2>Proyectos destacados</h2>
+        <p class="section-intro">Ejemplos de lo que puedo crear para tu negocio.</p>
+      </div>
+      <!-- TODO: reemplaza por tus proyectos reales cuando los tengas. -->
       <div class="grid projects">
-        <article class="card project">
-          <div class="thumb t1" aria-hidden="true"></div>
-          <h3>Nombre del proyecto</h3>
-          <p>Breve descripción de qué es el sitio y qué problema resuelve.</p>
-          <ul class="tags"><li>Diseño</li><li>Desarrollo</li></ul>
+        <article class="card project p1">
+          <div class="shape" aria-hidden="true"></div>
+          <h3>Negocio de comida</h3>
+          <p>Menú visual y pedidos por WhatsApp. Proyecto de ejemplo.</p>
+          <span class="go" aria-hidden="true">↗</span>
         </article>
-        <article class="card project">
-          <div class="thumb t2" aria-hidden="true"></div>
-          <h3>Nombre del proyecto</h3>
-          <p>Breve descripción de qué es el sitio y qué problema resuelve.</p>
-          <ul class="tags"><li>Contenido</li><li>Desarrollo</li></ul>
+        <article class="card project p2">
+          <div class="shape" aria-hidden="true"></div>
+          <h3>Tienda de ropa</h3>
+          <p>Catálogo por temporada con fotos grandes. Proyecto de ejemplo.</p>
+          <span class="go" aria-hidden="true">↗</span>
         </article>
-        <article class="card project">
-          <div class="thumb t3" aria-hidden="true"></div>
-          <h3>Nombre del proyecto</h3>
-          <p>Breve descripción de qué es el sitio y qué problema resuelve.</p>
-          <ul class="tags"><li>Diseño</li><li>Contenido</li></ul>
+        <article class="card project p3">
+          <div class="shape" aria-hidden="true"></div>
+          <h3>Zapatería</h3>
+          <p>Galería por categorías y contacto a la vista. Proyecto de ejemplo.</p>
+          <span class="go" aria-hidden="true">↗</span>
         </article>
       </div>
     </div>
   </section>
 
   <!-- SERVICIOS -->
-  <section class="section dark" id="servicios">
+  <section class="section" id="servicios">
     <div class="wrap">
-      <h2>Servicios</h2>
-      <p class="section-intro">Acompaño tu sitio desde la primera idea hasta que está en línea.</p>
-
-      <div class="grid services">
-        <article class="card">
-          <h3>Diseño a medida</h3>
-          <p>Una identidad visual propia para tu sitio, pensada para tu tema y tu público.</p>
-        </article>
-        <article class="card">
-          <h3>Desarrollo web</h3>
-          <p>Sitios rápidos y ligeros, sin dependencias innecesarias y fáciles de mantener.</p>
-        </article>
-        <article class="card">
-          <h3>Publicación</h3>
-          <p>Dejo tu sitio en línea con dominio propio, listo para que lo visiten.</p>
-        </article>
-        <article class="card">
-          <h3>Mejoras continuas</h3>
-          <p>Nuevas secciones y ajustes a medida que tu proyecto crece.</p>
-        </article>
+      <div class="panel">
+        <h2>Hecho para crecer</h2>
+        <p class="section-intro">Te acompaño desde la primera idea hasta que tu sitio está en línea.</p>
+        <div class="grid services">
+          <article class="card"><h3>Diseño a medida</h3><p>Una identidad visual propia, con tus colores y tu historia.</p></article>
+          <article class="card"><h3>Desarrollo web</h3><p>Sitios rápidos y ligeros, fáciles de mantener.</p></article>
+          <article class="card"><h3>Publicación</h3><p>Tu sitio en línea y listo para que lo visiten.</p></article>
+          <article class="card"><h3>Mejoras continuas</h3><p>Nuevas secciones a medida que tu negocio crece.</p></article>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SOBRE MÍ -->
-  <section class="section" id="sobre-mi">
+  <section class="section about-sec" id="sobre-mi">
     <div class="wrap about">
       <div class="avatar" aria-hidden="true">B</div>
       <div>
         <h2>Sobre mí</h2>
         <!-- TODO: escribe aquí tu historia con tus propias palabras. -->
-        <p>Soy la persona detrás de Brote Studio. Creo sitios web con una temática propia, porque creo que cada proyecto merece verse como lo que es y no como una plantilla.</p>
-        <p>Trabajo de forma cercana: hablamos, probamos ideas y avanzamos paso a paso, con un sitio que empieza pequeño y se ajusta a lo que necesites.</p>
+        <p>Soy la persona detrás de Brote Studio. Creo sitios web para negocios y emprendimientos que quieren una presencia en línea con personalidad propia.</p>
+        <p>Trabajo de forma cercana: hablamos, probamos ideas y avanzamos paso a paso, con un sitio que empieza pequeño y crece contigo.</p>
       </div>
     </div>
   </section>
 
   <!-- CONTACTO -->
-  <section class="section dark" id="contacto">
-    <div class="wrap contact">
-      <div>
-        <h2>Contacto</h2>
-        <p class="section-intro">Cuéntame qué tienes en mente y te respondo pronto.</p>
-        <!-- TODO: cuando tengas Instagram, agrega aquí: <li>Instagram: <a href="https://instagram.com/TU_USUARIO">@TU_USUARIO</a></li> -->
-        <ul class="contact-list">
-          <li>Correo: <a href="mailto:brotestudioverify@gmail.com">brotestudioverify@gmail.com</a></li>
-        </ul>
+  <section class="section" id="contacto">
+    <div class="wrap">
+      <div class="panel contact">
+        <div>
+          <h2>Contacto</h2>
+          <p class="section-intro">Cuéntame qué tienes en mente y te respondo pronto.</p>
+          <!-- TODO: cuando tengas Instagram, agrégalo aquí y en el pie de página. -->
+          <p><a class="mail" href="mailto:brotestudioverify@gmail.com">brotestudioverify@gmail.com</a></p>
+        </div>
+        <form class="form" id="contact-form" novalidate>
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          <label for="correo">Correo</label>
+          <input id="correo" name="correo" type="email" autocomplete="email" required>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+          <button type="submit" class="btn">Enviar mensaje <span class="arrow" aria-hidden="true">↗</span></button>
+          <p class="form-msg" id="form-msg" role="status"></p>
+        </form>
       </div>
-
-      <form class="card form" id="contact-form" novalidate>
-        <label for="nombre">Nombre</label>
-        <input id="nombre" name="nombre" type="text" autocomplete="name" required>
-        <label for="correo">Correo</label>
-        <input id="correo" name="correo" type="email" autocomplete="email" required>
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-        <button type="submit" class="btn">Enviar mensaje</button>
-        <p class="form-msg" id="form-msg" role="status"></p>
-      </form>
     </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <p>© <span id="year">2026</span> Brote Studio. Sitios web que nacen y crecen contigo.</p>
-    <a href="#top">Volver arriba</a>
+  <div class="wrap foot">
+    <div>
+      <a href="#inicio" class="logo"><img src="logo.png" alt="" width="30" height="32"><span>Brote Studio</span></a>
+      <p>Sitios web que nacen y crecen contigo.</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div>
+      <a href="mailto:brotestudioverify@gmail.com">brotestudioverify@gmail.com</a>
+      <a href="#top">Volver arriba</a>
+    </div>
   </div>
+  <div class="wrap copy">© <span id="year">2026</span> Brote Studio</div>
 </footer>
 
 <script src="script.js"></script>
