@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casa Migas · Panadería artesanal (proyecto de concepto)</title>
+  <meta name="description" content="Proyecto de concepto de Brote Studio: sitio para una panadería artesanal ficticia.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--verde-salvia); color: var(--casi-negro); }
+    .aviso { background: var(--casi-negro); color: var(--blanco); font-size: .9rem; padding: .6rem 0; }
+    .aviso .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
+    .aviso a { color: var(--verde-menta); font-weight: 600; }
+    .cm-top { padding: 1.25rem 0; }
+    .cm-top strong { font: 700 1.5rem var(--fuente-titulo); letter-spacing: -0.02em; color: var(--verde-bosque); }
+    .cm-hero { display: grid; gap: 2rem; align-items: center; padding: 2rem 0 4rem; }
+    .cm-hero h1 { color: var(--verde-bosque); text-transform: none; font-size: clamp(2.4rem, 7vw, 4.5rem); }
+    .cm-hero .btn-ghost { color: var(--casi-negro); border-color: var(--verde-bosque); }
+    .horno { aspect-ratio: 1; max-width: 360px; width: 100%; margin-inline: auto; border-radius: 50%; background: var(--verde-bosque); display: grid; place-content: center; position: relative; }
+    .horno::before { content: ""; width: 62%; aspect-ratio: 1.5; border-radius: 50% 50% 45% 45%; background: var(--verde-menta); }
+    .horno span { position: absolute; bottom: 14%; left: 0; right: 0; text-align: center; color: var(--blanco); font: 500 1rem var(--fuente-titulo); }
+    .cm-sec { padding: 3.5rem 0; }
+    .cm-sec h2 { color: var(--verde-bosque); text-transform: none; }
+    .menu-grid { display: grid; gap: 1rem; }
+    .item { background: var(--blanco); border-radius: var(--radio); padding: 1.4rem; display: flex; justify-content: space-between; gap: 1rem; }
+    .item h3 { text-transform: none; font-size: 1.15rem; margin-bottom: .2rem; }
+    .item p { margin: 0; font-size: .95rem; opacity: .8; }
+    .item b { font: 700 1.2rem var(--fuente-titulo); color: var(--verde-bosque); }
+    .nota { font-size: .9rem; opacity: .75; margin-top: 1rem; }
+    .info { display: grid; gap: 1.25rem; }
+    .info .card { background: var(--verde-bosque); color: var(--blanco); }
+    .info h3 { color: var(--verde-menta); text-transform: none; }
+    .info p { margin: 0 0 .3rem; }
+    .cm-foot { background: var(--verde-bosque); color: var(--blanco); padding: 2rem 0; margin-top: 3rem; font-size: .95rem; }
+    .cm-foot a { color: var(--verde-menta); }
+    @media (min-width: 760px) {
+      .cm-hero { grid-template-columns: 1.3fr 1fr; padding: 4rem 0 6rem; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .info { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="aviso">
+  <div class="wrap">
+    <span>Proyecto de concepto creado por Brote Studio. Casa Migas es un negocio ficticio.</span>
+    <a href="index.html#proyectos">Volver al portafolio</a>
+  </div>
+</div>
+
+<header class="cm-top"><div class="wrap"><strong>Casa Migas</strong></div></header>
+
+<main class="wrap">
+
+  <section class="cm-hero">
+    <div>
+      <h1>Pan de masa madre, hecho cada mañana</h1>
+      <p class="lead">Panadería artesanal de barrio. Mira el menú de hoy y haz tu pedido por WhatsApp.</p>
+      <div class="actions">
+        <a href="#pedido" class="btn">Hacer un pedido</a>
+        <a href="#menu" class="btn btn-ghost">Ver el menú</a>
+      </div>
+    </div>
+    <div class="horno" aria-hidden="true"><span>Horneado hoy</span></div>
+  </section>
+
+  <section class="cm-sec" id="menu">
+    <h2>El menú de hoy</h2>
+    <div class="menu-grid">
+      <article class="item"><div><h3>Pan de masa madre</h3><p>Corteza crujiente y miga suave. Fermentación de 24 horas.</p></div><b>$4</b></article>
+      <article class="item"><div><h3>Croissant de mantequilla</h3><p>Hojaldrado, recién salido del horno.</p></div><b>$2.5</b></article>
+      <article class="item"><div><h3>Pan de queso</h3><p>Relleno generoso, ideal para el desayuno.</p></div><b>$2</b></article>
+      <article class="item"><div><h3>Torta de zanahoria</h3><p>Porción individual con cobertura suave.</p></div><b>$3.5</b></article>
+      <article class="item"><div><h3>Pan integral con semillas</h3><p>Con girasol, ajonjolí y avena.</p></div><b>$4.5</b></article>
+      <article class="item"><div><h3>Café de filtro</h3><p>Para acompañar cualquier horneado.</p></div><b>$1.5</b></article>
+    </div>
+    <p class="nota">Precios de ejemplo. Un menú real se edita en un solo archivo.</p>
+  </section>
+
+  <section class="cm-sec" id="pedido">
+    <h2>Pide fácil</h2>
+    <div class="info">
+      <div class="card"><h3>Pedidos</h3><p>Escríbenos por WhatsApp con lo que quieres y la hora de retiro.</p><p><a class="btn btn-small" href="#pedido">Pedir por WhatsApp</a></p></div>
+      <div class="card"><h3>Horario</h3><p>Lunes a sábado: 6:30 a. m. a 2:00 p. m.</p><p>Domingo: 7:00 a. m. a 12:00 m.</p></div>
+      <div class="card"><h3>Dónde estamos</h3><p>Dirección de ejemplo, tu ciudad.</p><p>Retiro en tienda o entrega local.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="cm-foot">
+  <div class="wrap">Diseño y desarrollo: <a href="index.html">Brote Studio</a>. Proyecto de concepto, no es un negocio real.</div>
+</footer>
+
+</body>
+</html>
