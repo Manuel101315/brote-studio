@@ -58,7 +58,8 @@ p { margin: 0 0 1em; max-width: 62ch; }
   color: var(--blanco);
 }
 .bar { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
-.logo { font: 700 1.25rem var(--fuente-titulo); text-decoration: none; }
+.logo { display: flex; align-items: center; gap: .6rem; font: 700 1.25rem var(--fuente-titulo); text-decoration: none; }
+.logo img { width: 30px; height: auto; }
 .menu {
   position: absolute; top: 64px; left: 0; right: 0;
   display: none; flex-direction: column; gap: .25rem;

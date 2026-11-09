@@ -14,8 +14,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(f
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Formulario: valida y abre el correo del visitante con el mensaje listo.
-// TODO: cambia este correo por el tuyo (o conecta un servicio como Formspree).
-const CORREO_DESTINO = 'tu@correo.com';
+const CORREO_DESTINO = 'brotestudioverify@gmail.com';
 
 const form = document.getElementById('contact-form');
 const msg = document.getElementById('form-msg');
