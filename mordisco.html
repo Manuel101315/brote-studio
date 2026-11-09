@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mordisco · Comida rápida (proyecto de concepto)</title>
+  <meta name="description" content="Proyecto de concepto de Brote Studio: sitio para un negocio ficticio de comida rápida.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="mordisco-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --noche:#14100C; --carbon:#211A13; --ambar:#F5B72D; --crema:#FFF4DC; --linea:rgba(255,244,220,.16); }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:72px; }
+    body { margin:0; font:1.0625rem/1.65 "Inter",system-ui,sans-serif; background:var(--noche); color:var(--crema); }
+    a { color:inherit; }
+    :focus-visible { outline:3px solid var(--ambar); outline-offset:3px; border-radius:6px; }
+    h1,h2,h3 { font-family:"Space Grotesk",system-ui,sans-serif; text-transform:uppercase; letter-spacing:-.03em; line-height:1; margin:0 0 .5em; }
+    h1 { font-size:clamp(2.4rem,9vw,5rem); font-weight:700; }
+    h2 { font-size:clamp(1.9rem,6vw,3rem); font-weight:700; }
+    h3 { font-size:1.15rem; font-weight:700; letter-spacing:-.01em; }
+    p { margin:0 0 1em; max-width:58ch; }
+    .wrap { width:min(1160px,100% - 2.5rem); margin-inline:auto; }
+    .amb { color:var(--ambar); }
+    .btn { display:inline-flex; align-items:center; gap:.5em; padding:.8em 1.5em; border:2px solid var(--ambar); border-radius:999px; background:var(--ambar); color:var(--noche); font:600 1rem "Inter",sans-serif; text-decoration:none; transition:transform .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn.out { background:transparent; color:var(--crema); }
+    .btn.sm { padding:.5em 1.1em; font-size:.92rem; }
+    .art { display:block; width:100%; height:100%; }
+
+    .aviso { background:var(--ambar); color:var(--noche); font-size:.88rem; padding:.5rem 0; }
+    .aviso .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.3rem 1rem; }
+    .aviso a { font-weight:600; }
+    header.top { position:sticky; top:0; z-index:10; background:var(--noche); border-bottom:1px solid var(--linea); }
+    .bar { display:flex; align-items:center; justify-content:space-between; min-height:68px; gap:1rem; }
+    .marca { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+    .marca img { width:40px; height:40px; }
+    .marca b { display:block; font:700 1.3rem "Space Grotesk",sans-serif; text-transform:uppercase; letter-spacing:-.02em; line-height:1; }
+    .marca small { display:block; font-size:.72rem; opacity:.7; line-height:1.3; }
+    nav.principal { display:none; gap:1.75rem; font-size:.95rem; }
+    nav.principal a { text-decoration:none; }
+    nav.principal a:hover { color:var(--ambar); }
+
+    .hero { padding:2.5rem 0 3.5rem; display:grid; gap:2rem; align-items:center; }
+    .hero .lead { font-size:1.15rem; opacity:.9; }
+    .acc { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .escena { position:relative; aspect-ratio:1.1; border-radius:28px; background:var(--carbon); border:1px solid var(--linea); display:grid; place-content:center; overflow:hidden; }
+    .escena::before { content:""; position:absolute; width:78%; aspect-ratio:1; border-radius:50%; background:var(--ambar); top:50%; left:50%; translate:-50% -50%; }
+    .escena .art { position:relative; width:min(78%,420px); height:auto; filter:drop-shadow(0 14px 18px rgba(20,16,12,.35)); animation:flota 4s ease-in-out infinite; }
+    @keyframes flota { 50% { transform:translateY(-8px); } }
+
+    .rapida { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--linea); border:1px solid var(--linea); border-radius:20px; overflow:hidden; }
+    .rapida div { background:var(--carbon); padding:1.1rem .8rem; text-align:center; font:500 .92rem "Space Grotesk",sans-serif; }
+    .rapida .art { width:56px; height:48px; margin:0 auto .4rem; }
+
+    .sec { padding:4rem 0; }
+    .sub { opacity:.75; margin-bottom:2rem; }
+    .cards { display:grid; gap:1.25rem; }
+    .plato { background:var(--carbon); border:1px solid var(--linea); border-radius:22px; overflow:hidden; }
+    .ph { background:var(--ambar); padding:1.5rem; height:200px; }
+    .plato .row { padding:1.25rem; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+    .plato h3 { margin-bottom:.3rem; }
+    .plato p { margin:0; font-size:.92rem; opacity:.75; }
+    .plato b { font:700 1.3rem "Space Grotesk",sans-serif; color:var(--ambar); }
+
+    .promo { background:var(--ambar); color:var(--noche); border-radius:28px; padding:2rem 1.5rem; display:grid; gap:1.25rem; align-items:center; }
+    .promo h2 { margin:0 0 .4em; }
+    .promo p { margin:0; font-weight:500; }
+    .codigo { display:inline-block; margin-top:.8rem; padding:.35em 1em; border:2px dashed var(--noche); border-radius:999px; font:700 .95rem "Space Grotesk",sans-serif; letter-spacing:.04em; }
+    .promo .btn { background:var(--noche); color:var(--crema); border-color:var(--noche); justify-self:start; }
+
+    .info { display:grid; gap:1.25rem; }
+    .caja { background:var(--carbon); border:1px solid var(--linea); border-radius:22px; padding:1.75rem; }
+    .caja h3 { color:var(--ambar); }
+    .caja p { margin:0 0 1rem; }
+    .nota { margin-top:1.5rem; font-size:.9rem; opacity:.7; }
+
+    footer.pie { border-top:1px solid var(--linea); padding:2.5rem 0 1.5rem; background:var(--carbon); }
+    .pie .cols { display:grid; gap:1.5rem; }
+    .pie nav { display:flex; flex-direction:column; gap:.4rem; font-size:.95rem; }
+    .pie a:hover { color:var(--ambar); }
+    .pie .legal { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--linea); font-size:.85rem; opacity:.7; }
+
+    @media (min-width:760px) {
+      nav.principal { display:flex; }
+      .hero { grid-template-columns:1.05fr 1fr; padding:4rem 0 5rem; }
+      .rapida { grid-template-columns:repeat(4,1fr); }
+      .cards { grid-template-columns:repeat(2,1fr); }
+      .promo { grid-template-columns:1.4fr 1fr; padding:2.75rem 3rem; }
+      .promo .btn { justify-self:end; }
+      .info { grid-template-columns:repeat(3,1fr); }
+      .pie .cols { grid-template-columns:1.6fr 1fr; }
+    }
+    @media (min-width:1000px) { .cards { grid-template-columns:repeat(4,1fr); } }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} *{transition:none!important;animation:none!important;} }
+  </style>
+</head>
+<body>
+
+<div class="aviso"><div class="wrap"><span>Proyecto de concepto creado por Brote Studio. Mordisco es un negocio ficticio.</span><a href="index.html#proyectos">Volver al portafolio</a></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="burger" viewBox="0 0 120 100"><path d="M12 46C12 20 36 8 60 8s48 12 48 38z" fill="#C0711A"/><ellipse cx="40" cy="24" rx="3" ry="1.6" fill="#FFF4DC"/><ellipse cx="62" cy="18" rx="3" ry="1.6" fill="#FFF4DC"/><ellipse cx="82" cy="26" rx="3" ry="1.6" fill="#FFF4DC"/><path d="M8 48q8 8 16 0t16 0 16 0 16 0 16 0 16 0v6H8z" fill="#5DBB63"/><path d="M14 54h92l-14 8H28z" fill="#FFE08A"/><rect x="12" y="60" width="96" height="14" rx="7" fill="#5A3420"/><path d="M12 78h96v2c0 8-6 12-14 12H26c-8 0-14-4-14-12z" fill="#C0711A"/></symbol><symbol id="fries" viewBox="0 0 120 100"><rect x="34" y="14" width="9" height="42" rx="3" fill="#FFF4DC"/><rect x="46" y="8" width="9" height="48" rx="3" fill="#FFE08A"/><rect x="58" y="16" width="9" height="40" rx="3" fill="#FFF4DC"/><rect x="70" y="10" width="9" height="46" rx="3" fill="#FFE08A"/><rect x="82" y="20" width="9" height="36" rx="3" fill="#FFF4DC"/><path d="M28 50h64l-8 46H36z" fill="#E4572E"/><path d="M36 64h48l-1.5 9h-45z" fill="#FFF4DC" opacity=".9"/></symbol><symbol id="dog" viewBox="0 0 120 100"><rect x="8" y="34" width="104" height="38" rx="19" fill="#C0711A"/><rect x="2" y="42" width="116" height="18" rx="9" fill="#E4572E"/><path d="M8 52h104v6c0 12-8 20-20 20H28C16 78 8 70 8 58z" fill="#C0711A" opacity="0"/><rect x="8" y="52" width="104" height="24" rx="12" fill="#C0711A"/><path d="M14 50l8-6 8 6 8-6 8 6 8-6 8 6 8-6 8 6 8-6 8 6" stroke="#FFE08A" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="cup" viewBox="0 0 120 100"><path d="M62 24L72 6h16" stroke="#E4572E" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="32" y="22" width="56" height="11" rx="5" fill="#1A1410"/><path d="M37 33h46l-6 62H43z" fill="#FFF4DC"/><path d="M39 50h42l-1.2 14H40.2z" fill="#E4572E"/></symbol></svg>
+
+<header class="top" id="inicio">
+  <div class="wrap bar">
+    <a class="marca" href="#inicio"><img src="mordisco-logo.svg" alt="" width="40" height="40"><span><b>Mordisco</b><small>Comida rápida</small></span></a>
+    <nav class="principal" aria-label="Principal"><a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+    <a class="btn sm" href="#menu">Pedir</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Comida rápida,<br><span class="amb">hecha con ganas.</span></h1>
+      <p class="lead">Hamburguesas, papas, perros calientes y bebidas bien frías. Elige tu combo y pide en segundos.</p>
+      <div class="acc"><a href="#menu" class="btn">Ver el menú</a><a href="#ofertas" class="btn out">Ofertas de hoy</a></div>
+    </div>
+    <div class="escena" aria-hidden="true"><svg class="art" viewBox="0 0 120 100"><use href="#burger"/></svg></div>
+  </section>
+
+  <section class="wrap" aria-label="Lo que ofrecemos">
+    <div class="rapida">
+      <div><svg class="art" viewBox="0 0 120 100"><use href="#burger"/></svg>Hamburguesas</div>
+      <div><svg class="art" viewBox="0 0 120 100"><use href="#fries"/></svg>Papas crujientes</div>
+      <div><svg class="art" viewBox="0 0 120 100"><use href="#dog"/></svg>Perros calientes</div>
+      <div><svg class="art" viewBox="0 0 120 100"><use href="#cup"/></svg>Bebidas frías</div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="menu">
+    <h2>Favoritos <span class="amb">de la casa</span></h2>
+    <p class="sub">Lo que más se pide en el mostrador.</p>
+    <div class="cards">
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#burger"/></svg></div><div class="row"><div><h3>Hamburguesa clásica</h3><p>Carne, queso, lechuga y salsa de la casa.</p></div><b>$6</b></div></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#fries"/></svg></div><div class="row"><div><h3>Papas crujientes</h3><p>Doradas y con sal justa.</p></div><b>$3</b></div></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#dog"/></svg></div><div class="row"><div><h3>Perro caliente</h3><p>Con mostaza y todos los toppings.</p></div><b>$4</b></div></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#cup"/></svg></div><div class="row"><div><h3>Refresco grande</h3><p>Bien frío, con rellenos disponibles.</p></div><b>$2.5</b></div></article>
+    </div>
+    <p class="nota">Precios de ejemplo.</p>
+  </section>
+
+  <section class="wrap sec" id="ofertas">
+    <div class="promo">
+      <div>
+        <h2>2x1 en hamburguesas</h2>
+        <p>Todos los martes, en tienda y para llevar.</p>
+        <span class="codigo">CÓDIGO: MORDISCO</span>
+      </div>
+      <a class="btn" href="#visitanos">Pedir ahora</a>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="visitanos">
+    <h2>Pide fácil <span class="amb">y visítanos</span></h2>
+    <div class="info">
+      <div class="caja"><h3>Horario</h3><p>Todos los días: 11 a. m. a 11 p. m.</p></div>
+      <div class="caja"><h3>Pedidos</h3><p>Por WhatsApp, para llevar o con entrega local.</p><a class="btn sm" href="https://wa.me/584120844355?text=Hola%2C%20vi%20el%20proyecto%20Mordisco%20en%20tu%20portafolio%20y%20quiero%20una%20web%20as%C3%AD" target="_blank" rel="noopener">Pedir por WhatsApp</a></div>
+      <div class="caja"><h3>Dónde estamos</h3><p>Dirección de ejemplo, tu ciudad.</p></div>
+    </div>
+    <p class="nota">Como es un proyecto de concepto, el botón de WhatsApp envía el mensaje a Brote Studio.</p>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="cols">
+      <a class="marca" href="#inicio"><img src="mordisco-logo.svg" alt="" width="40" height="40"><span><b>Mordisco</b><small>Comida rápida</small></span></a>
+      <nav aria-label="Pie de página"><a href="#menu">Menú</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+    </div>
+    <p class="legal">Proyecto de concepto, no es un negocio real. Diseño y desarrollo: <a href="index.html">Brote Studio</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
