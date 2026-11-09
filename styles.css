@@ -98,7 +98,13 @@ p { margin: 0 0 1em; max-width: 60ch; }
 /* Contacto */
 #contacto .panel { background: var(--verde-bosque); color: var(--blanco); border: 1px solid var(--linea); }
 .contact { display: grid; gap: 2.5rem; align-items: start; }
-.mail { color: var(--verde-menta); font-weight: 600; overflow-wrap: anywhere; }
+.links { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; }
+.links a { display: flex; align-items: center; gap: .9rem; text-decoration: none; font-weight: 500; overflow-wrap: anywhere; }
+.links a:hover { color: var(--verde-menta); }
+.ico { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--verde-menta); color: var(--casi-negro); display: grid; place-content: center; transition: transform .2s; }
+.ico svg { width: 22px; height: 22px; }
+a:hover > .ico, a.ico:hover { transform: translateY(-2px); }
+.redes { display: flex; gap: .75rem; }
 .form { display: grid; gap: .4rem; }
 .form label { font-weight: 500; font-size: .95rem; margin-top: .6rem; }
 .form input, .form textarea { width: 100%; padding: .75em 1em; border: 2px solid var(--linea); border-radius: var(--radio-sm); font: inherit; color: var(--blanco); background: var(--casi-negro); }
