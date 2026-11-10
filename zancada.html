@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zancada · Calzado para cada paso (proyecto de concepto)</title>
+  <meta name="description" content="Proyecto de concepto de Brote Studio: sitio para una zapatería ficticia.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="zancada-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --hueso:#F2F6FB; --arena:#E3EBF5; --tinta:#0E1B2C; --coral:#C6F432; --indigo:#1E6BFF; --linea:rgba(14,27,44,.16); }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:72px; }
+    body { margin:0; font:1.0625rem/1.65 "Inter",system-ui,sans-serif; background:var(--hueso); color:var(--tinta); }
+    a { color:inherit; }
+    [hidden] { display:none !important; }
+    :focus-visible { outline:3px solid var(--indigo); outline-offset:3px; border-radius:6px; }
+    h1,h2,h3 { font-family:"Space Grotesk",system-ui,sans-serif; text-transform:uppercase; letter-spacing:-.03em; line-height:1; margin:0 0 .5em; }
+    h1 { font-size:clamp(2.5rem,9vw,5rem); font-weight:700; }
+    h2 { font-size:clamp(1.9rem,6vw,3rem); font-weight:700; }
+    h3 { font-size:1.1rem; font-weight:700; letter-spacing:-.01em; }
+    p { margin:0 0 1em; max-width:58ch; }
+    .wrap { width:min(1160px,100% - 2.5rem); margin-inline:auto; }
+    .cor { color:var(--indigo); }
+    .btn { display:inline-flex; align-items:center; gap:.5em; padding:.8em 1.5em; border:2px solid var(--tinta); border-radius:999px; background:var(--tinta); color:var(--hueso); font:600 1rem "Inter",sans-serif; text-decoration:none; cursor:pointer; transition:transform .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn.out { background:transparent; color:var(--tinta); }
+    .btn.co { background:var(--coral); border-color:var(--coral); color:var(--tinta); }
+    .btn.sm { padding:.5em 1.1em; font-size:.92rem; }
+    .art { display:block; width:100%; height:100%; }
+
+    .aviso { background:var(--tinta); color:var(--hueso); font-size:.88rem; padding:.5rem 0; }
+    .aviso .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.3rem 1rem; }
+    .aviso a { color:var(--coral); font-weight:600; }
+    header.top { position:sticky; top:0; z-index:10; background:var(--hueso); border-bottom:1px solid var(--linea); }
+    .bar { display:flex; align-items:center; justify-content:space-between; min-height:68px; gap:1rem; }
+    .marca { display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+    .marca img { width:40px; height:40px; }
+    .marca b { display:block; font:700 1.25rem "Space Grotesk",sans-serif; text-transform:uppercase; letter-spacing:-.02em; line-height:1; }
+    .marca small { display:block; font-size:.72rem; opacity:.65; line-height:1.3; }
+    nav.principal { display:none; gap:1.75rem; font-size:.95rem; }
+    nav.principal a { text-decoration:none; }
+    nav.principal a:hover { color:var(--indigo); }
+    nav.principal.open { display:flex; flex-direction:column; gap:.5rem; position:absolute; top:68px; left:0; right:0; background:var(--hueso); padding:1rem 1.25rem 1.5rem; border-bottom:1px solid var(--linea); }
+    .menu-btn { background:none; border:0; width:44px; height:44px; cursor:pointer; display:grid; place-content:center; gap:7px; }
+    .menu-btn span { display:block; width:24px; height:2px; background:var(--tinta); border-radius:2px; }
+
+    .hero { padding:2.5rem 0 3.5rem; display:grid; gap:2rem; align-items:center; }
+    .hero .lead { font-size:1.15rem; opacity:.85; }
+    .acc { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .escena { position:relative; aspect-ratio:1.1; border-radius:28px; background:var(--indigo); display:grid; place-content:center; overflow:hidden; }
+    .escena::before { content:""; position:absolute; width:74%; aspect-ratio:1; border-radius:50%; background:var(--coral); top:50%; left:50%; translate:-50% -50%; }
+    .escena .art { position:relative; width:min(72%,380px); height:auto; filter:drop-shadow(0 14px 16px rgba(14,27,44,.25)); animation:flota 4s ease-in-out infinite; }
+    @keyframes flota { 50% { transform:translateY(-8px) rotate(-2deg); } }
+
+    .cats { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--linea); border:1px solid var(--linea); border-radius:20px; overflow:hidden; }
+    .cats a { background:var(--arena); padding:1rem .8rem; text-align:center; font:500 .95rem "Space Grotesk",sans-serif; text-decoration:none; transition:background .2s; }
+    .cats a:hover { background:var(--coral); }
+    .add { background:var(--tinta); color:var(--hueso); } .add:hover { background:var(--indigo); }
+    .btn.co { color:var(--tinta); }
+    .cats .art { width:52px; height:44px; margin:0 auto .4rem; }
+
+    .sec { padding:4rem 0; }
+    .sub { opacity:.7; margin-bottom:2rem; }
+    .nota { margin-top:1.5rem; font-size:.9rem; opacity:.7; }
+    .cards { display:grid; gap:1.25rem; }
+    .plato { background:var(--blanco,#fff); border:1px solid var(--linea); border-radius:22px; overflow:hidden; display:flex; flex-direction:column; }
+    .ph { background:var(--arena); padding:1.5rem; height:210px; }
+    .plato .row { padding:1.25rem 1.25rem .8rem; display:flex; justify-content:space-between; gap:1rem; flex:1; }
+    .plato h3 { margin-bottom:.3rem; }
+    .plato p { margin:0; font-size:.92rem; opacity:.7; }
+    .plato b { font:700 1.3rem "Space Grotesk",sans-serif; }
+    .acciones { display:flex; gap:.6rem; padding:0 1.25rem 1.25rem; }
+    .talla { flex:none; padding:.55em .8em; border:2px solid var(--linea); border-radius:12px; background:var(--hueso); font:500 .95rem "Inter",sans-serif; color:var(--tinta); }
+    .add { flex:1; border:0; border-radius:12px; background:var(--coral); color:var(--tinta); font:600 .95rem "Inter",sans-serif; padding:.6em 1em; cursor:pointer; transition:transform .2s; }
+    .add:hover { transform:translateY(-2px); }
+
+    .promo { background:var(--coral); border-radius:28px; padding:2rem 1.5rem; display:grid; gap:1.25rem; align-items:center; }
+    .promo h2 { margin:0 0 .4em; }
+    .promo p { margin:0; font-weight:500; }
+    .codigo { display:inline-block; margin-top:.8rem; padding:.35em 1em; border:2px dashed var(--tinta); border-radius:999px; font:700 .95rem "Space Grotesk",sans-serif; letter-spacing:.04em; }
+    .promo .btn { justify-self:start; }
+
+    .info { display:grid; gap:1.25rem; }
+    .caja { background:var(--arena); border-radius:22px; padding:1.75rem; }
+    .caja h3 { color:var(--indigo); }
+    .caja p { margin:0 0 1rem; }
+
+    footer.pie { background:var(--tinta); color:var(--hueso); padding:2.5rem 0 1.5rem; }
+    .pie .cols { display:grid; gap:1.5rem; }
+    .pie nav { display:flex; flex-direction:column; gap:.4rem; font-size:.95rem; }
+    .pie a:hover { color:var(--coral); }
+    .pie .legal { margin-top:2rem; padding-top:1rem; border-top:1px solid rgba(242,246,251,.2); font-size:.85rem; opacity:.7; }
+
+    .pedido-bar { position:fixed; left:0; right:0; bottom:0; z-index:20; background:var(--tinta); color:var(--hueso); border-top:3px solid var(--coral); padding:.8rem 1.25rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.6rem; }
+    .pedido-bar strong { margin-right:.6rem; }
+    .pedido-bar #pb-total { color:var(--coral); font:700 1.1rem "Space Grotesk",sans-serif; }
+    .pb-acc { display:flex; gap:.6rem; }
+    .pedido-bar .btn.out { color:var(--hueso); border-color:var(--hueso); }
+    .pedido-bar .btn { background:var(--coral); border-color:var(--coral); color:var(--tinta); }
+    .pedido-bar .btn.out { background:transparent; color:var(--hueso); border-color:var(--hueso); }
+    body.con-pedido { padding-bottom:84px; }
+
+    @media (min-width:760px) {
+      .menu-btn { display:none; }
+      nav.principal, nav.principal.open { display:flex; position:static; flex-direction:row; padding:0; border:0; background:none; }
+      .hero { grid-template-columns:1.05fr 1fr; padding:4rem 0 5rem; }
+      .cats { grid-template-columns:repeat(4,1fr); }
+      .cards { grid-template-columns:repeat(2,1fr); }
+      .promo { grid-template-columns:1.4fr 1fr; padding:2.75rem 3rem; }
+      .promo .btn { justify-self:end; }
+      .info { grid-template-columns:repeat(3,1fr); }
+      .pie .cols { grid-template-columns:1.6fr 1fr; }
+    }
+    @media (min-width:1000px) { .cards { grid-template-columns:repeat(4,1fr); } }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} *{transition:none!important;animation:none!important;} }
+  </style>
+</head>
+<body>
+
+<div class="aviso"><div class="wrap"><span>Proyecto de concepto creado por Brote Studio. Zancada es una zapatería ficticia.</span><a href="index.html#proyectos">Volver al portafolio</a></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sneaker" viewBox="0 0 120 100"><path d="M10 74h102v8c0 4-4 6-8 6H18c-5 0-8-3-8-6z" fill="#FFFFFF"/><path d="M12 74V52c0-4 3-6 7-5l19 5 14-14c4-4 8-2 10 2 4 12 18 18 38 22 8 2 12 6 12 12z" fill="#1E6BFF"/><path d="M30 68c20-2 40-6 56-12" stroke="#C6F432" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M46 44l8 6M52 40l8 6" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/></symbol><symbol id="boot" viewBox="0 0 120 100"><path d="M26 10h32v36c0 8 6 12 18 16 22 6 32 8 32 18H22z" fill="#B5651D"/><rect x="26" y="10" width="32" height="10" fill="#8A4A12"/><rect x="18" y="80" width="94" height="10" rx="5" fill="#0E1B2C"/><path d="M32 28h20M32 36h20M32 44h20" stroke="#F2F6FB" stroke-width="3" stroke-linecap="round"/></symbol><symbol id="sandal" viewBox="0 0 120 100"><path d="M10 78c0-8 10-12 30-12h56c12 0 16 8 12 14-4 6-12 6-18 6H24c-10 0-14-2-14-8z" fill="#0E1B2C"/><path d="M34 66c4-22 28-22 32 0M66 66c4-14 24-14 28 0" stroke="#1E6BFF" stroke-width="9" fill="none" stroke-linecap="round"/></symbol><symbol id="loafer" viewBox="0 0 120 100"><path d="M12 78V60c0-8 6-10 12-8l22 6c14 0 24-8 32-6 20 4 30 14 32 26z" fill="#6B3A1E"/><ellipse cx="60" cy="58" rx="15" ry="5" fill="#4A2812"/><rect x="40" y="60" width="26" height="6" rx="3" fill="#C6F432"/><rect x="10" y="78" width="104" height="8" rx="4" fill="#0E1B2C"/></symbol></svg>
+
+<header class="top" id="inicio">
+  <div class="wrap bar">
+    <a class="marca" href="#inicio"><img src="zancada-logo.svg" alt="" width="40" height="40"><span><b>Zancada</b><small>Calzado para cada paso</small></span></a>
+    <nav class="principal" id="nav" aria-label="Principal"><a href="#inicio">Inicio</a><a href="#coleccion">Colección</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+    <a class="btn sm" href="#coleccion">Comprar</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Zapatos para cada paso,<br><span class="cor">cómodos y con estilo.</span></h1>
+      <p class="lead">Zapatillas, botas, sandalias y mocasines para todos los días. Elige tu número y pide por WhatsApp.</p>
+      <div class="acc"><a href="#coleccion" class="btn co">Ver la colección</a><a href="#ofertas" class="btn out">Ofertas</a></div>
+    </div>
+    <div class="escena" aria-hidden="true"><svg class="art" viewBox="0 0 120 100"><use href="#sneaker"/></svg></div>
+  </section>
+
+  <section class="wrap" aria-label="Categorías">
+    <div class="cats"><a href="#coleccion"><svg class="art" viewBox="0 0 120 100"><use href="#sneaker"/></svg>Deportivas</a><a href="#coleccion"><svg class="art" viewBox="0 0 120 100"><use href="#boot"/></svg>Botas</a><a href="#coleccion"><svg class="art" viewBox="0 0 120 100"><use href="#sandal"/></svg>Sandalias</a><a href="#coleccion"><svg class="art" viewBox="0 0 120 100"><use href="#loafer"/></svg>Mocasines</a></div>
+  </section>
+
+  <section class="wrap sec" id="coleccion">
+    <h2>Colección <span class="cor">de temporada</span></h2>
+    <p class="sub">Elige tu número y agrega al pedido.</p>
+    <div class="cards"><article class="plato" data-name="Zapatilla deportiva" data-price="35"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#sneaker"/></svg></div><div class="row"><div><h3>Zapatilla deportiva</h3><p>Suela ligera y mucha amortiguación.</p></div><b>$35</b></div><div class="acciones"><select class="talla" aria-label="Número de Zapatilla deportiva"><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option></select><button class="add" type="button">Agregar</button></div></article><article class="plato" data-name="Bota de cuero" data-price="45"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#boot"/></svg></div><div class="row"><div><h3>Bota de cuero</h3><p>Resistente y con acabado clásico.</p></div><b>$45</b></div><div class="acciones"><select class="talla" aria-label="Número de Bota de cuero"><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option></select><button class="add" type="button">Agregar</button></div></article><article class="plato" data-name="Sandalia casual" data-price="18"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#sandal"/></svg></div><div class="row"><div><h3>Sandalia casual</h3><p>Fresca, con correas ajustables.</p></div><b>$18</b></div><div class="acciones"><select class="talla" aria-label="Número de Sandalia casual"><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option></select><button class="add" type="button">Agregar</button></div></article><article class="plato" data-name="Mocasín clásico" data-price="30"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#loafer"/></svg></div><div class="row"><div><h3>Mocasín clásico</h3><p>Para la oficina y las salidas.</p></div><b>$30</b></div><div class="acciones"><select class="talla" aria-label="Número de Mocasín clásico"><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option></select><button class="add" type="button">Agregar</button></div></article></div>
+    <p class="nota">Precios y productos de ejemplo.</p>
+  </section>
+
+  <section class="wrap sec" id="ofertas">
+    <div class="promo">
+      <div><h2>20% en el segundo par</h2><p>Lleva dos pares y menciona el código al pedir por WhatsApp.</p><span class="codigo">CÓDIGO: ZANCADA20</span></div>
+      <a class="btn" href="#coleccion">Empezar a comprar</a>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="visitanos">
+    <h2>Compra fácil <span class="cor">y visítanos</span></h2>
+    <div class="info">
+      <div class="caja"><h3>Horario</h3><p>Lunes a sábado: 9 a. m. a 7 p. m.</p></div>
+      <div class="caja"><h3>Pedidos</h3><p>Por WhatsApp, con retiro en tienda o entrega local.</p><a class="btn sm" href="https://wa.me/584120844355?text=Hola%2C%20vi%20el%20proyecto%20Zancada%20en%20tu%20portafolio%20y%20quiero%20una%20web%20as%C3%AD" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+      <div class="caja"><h3>Dónde estamos</h3><p>Dirección de ejemplo, tu ciudad.</p></div>
+    </div>
+    <p class="nota">Como es un proyecto de concepto, los mensajes de WhatsApp llegan a Brote Studio.</p>
+  </section>
+</main>
+
+<div class="pedido-bar" id="pb" hidden>
+  <div><strong id="pb-count">0 pares</strong> <span id="pb-total">$0</span></div>
+  <div class="pb-acc"><button class="btn sm out" id="pb-clear" type="button">Vaciar</button><a class="btn sm" id="pb-send" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a></div>
+</div>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="cols">
+      <a class="marca" href="#inicio"><img src="zancada-logo.svg" alt="" width="40" height="40"><span><b>Zancada</b><small>Calzado para cada paso</small></span></a>
+      <nav aria-label="Pie de página"><a href="#coleccion">Colección</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+    </div>
+    <p class="legal">Proyecto de concepto, no es un negocio real. Diseño y desarrollo: <a href="index.html">Brote Studio</a>.</p>
+  </div>
+</footer>
+
+<script>
+const NUM='584120844355', order={};
+const $=id=>document.getElementById(id);
+const pb=$('pb'), cards=document.querySelectorAll('.plato');
+const fmt=n=>'$'+(Math.round(n*100)/100);
+function render(){
+  const it=Object.entries(order);
+  const n=it.reduce((a,[,i])=>a+i.qty,0), t=it.reduce((a,[,i])=>a+i.qty*i.price,0);
+  pb.hidden=n===0; document.body.classList.toggle('con-pedido',n>0);
+  $('pb-count').textContent=n+(n===1?' par':' pares'); $('pb-total').textContent=fmt(t);
+  const txt='Hola, quiero hacer este pedido en Zancada (proyecto de concepto):\n'+it.map(([k,i])=>'- '+i.qty+' x '+k).join('\n')+'\nTotal: '+fmt(t);
+  $('pb-send').href='https://wa.me/'+NUM+'?text='+encodeURIComponent(txt);
+  cards.forEach(c=>{const nm=c.dataset.name; const q=it.filter(([k])=>k.startsWith(nm+' (')).reduce((a,[,i])=>a+i.qty,0); c.querySelector('.add').textContent=q?'Agregar otra ('+q+')':'Agregar';});
+}
+cards.forEach(c=>c.querySelector('.add').addEventListener('click',()=>{
+  const k=c.dataset.name+' ('+c.querySelector('.talla').value+')';
+  order[k]=order[k]||{price:parseFloat(c.dataset.price),qty:0}; order[k].qty++; render();
+}));
+$('pb-clear').addEventListener('click',()=>{for(const k in order) delete order[k]; render();});
+const mb=document.querySelector('.menu-btn'), nav=$('nav');
+function toggle(o){nav.classList.toggle('open',o); mb.setAttribute('aria-expanded',o);}
+mb.addEventListener('click',()=>toggle(!nav.classList.contains('open')));
+nav.addEventListener('click',e=>{if(e.target.tagName==='A') toggle(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') toggle(false);});
+</script>
+</body>
+</html>
