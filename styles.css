@@ -157,3 +157,6 @@ a:hover > .ico, a.ico:hover { transform: translateY(-2px); }
 .p1 .shape svg { width: auto; height: 100%; stroke: none; fill: none; }
 .p2 .shape { color: var(--verde-menta); }
 .p3 .shape { color: var(--casi-negro); }
+
+.project h3, .project p { position: static; }
+.project h3 a::after { z-index: 1; }

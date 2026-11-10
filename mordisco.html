@@ -95,6 +95,19 @@
     }
     @media (min-width:1000px) { .cards { grid-template-columns:repeat(4,1fr); } }
     @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} *{transition:none!important;animation:none!important;} }
+
+    [hidden] { display:none !important; }
+    .add { width:100%; border:0; border-top:1px solid var(--linea); background:transparent; color:var(--ambar); font:600 .95rem "Inter",sans-serif; padding:.9rem; cursor:pointer; transition:background .2s,color .2s; }
+    .add:hover { background:var(--ambar); color:var(--noche); }
+    .menu-btn { background:none; border:0; width:44px; height:44px; cursor:pointer; display:grid; place-content:center; gap:7px; }
+    .menu-btn span { display:block; width:24px; height:2px; background:var(--crema); border-radius:2px; }
+    nav.principal.open { display:flex; flex-direction:column; gap:.5rem; position:absolute; top:68px; left:0; right:0; background:var(--noche); padding:1rem 1.25rem 1.5rem; border-bottom:1px solid var(--linea); }
+    .pedido-bar { position:fixed; left:0; right:0; bottom:0; z-index:20; background:var(--carbon); border-top:2px solid var(--ambar); padding:.8rem 1.25rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.6rem; }
+    .pedido-bar strong { margin-right:.6rem; }
+    .pedido-bar #pb-total { color:var(--ambar); font:700 1.1rem "Space Grotesk",sans-serif; }
+    .pb-acc { display:flex; gap:.6rem; }
+    body.con-pedido { padding-bottom:84px; }
+    @media (min-width:760px) { .menu-btn { display:none; } nav.principal.open { position:static; flex-direction:row; padding:0; border:0; } }
   </style>
 </head>
 <body>
@@ -106,8 +119,9 @@
 <header class="top" id="inicio">
   <div class="wrap bar">
     <a class="marca" href="#inicio"><img src="mordisco-logo.svg" alt="" width="40" height="40"><span><b>Mordisco</b><small>Comida rápida</small></span></a>
-    <nav class="principal" aria-label="Principal"><a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
+    <nav class="principal" id="nav" aria-label="Principal"><a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#ofertas">Ofertas</a><a href="#visitanos">Visítanos</a></nav>
     <a class="btn sm" href="#menu">Pedir</a>
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
   </div>
 </header>
 
@@ -134,10 +148,10 @@
     <h2>Favoritos <span class="amb">de la casa</span></h2>
     <p class="sub">Lo que más se pide en el mostrador.</p>
     <div class="cards">
-      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#burger"/></svg></div><div class="row"><div><h3>Hamburguesa clásica</h3><p>Carne, queso, lechuga y salsa de la casa.</p></div><b>$6</b></div></article>
-      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#fries"/></svg></div><div class="row"><div><h3>Papas crujientes</h3><p>Doradas y con sal justa.</p></div><b>$3</b></div></article>
-      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#dog"/></svg></div><div class="row"><div><h3>Perro caliente</h3><p>Con mostaza y todos los toppings.</p></div><b>$4</b></div></article>
-      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#cup"/></svg></div><div class="row"><div><h3>Refresco grande</h3><p>Bien frío, con rellenos disponibles.</p></div><b>$2.5</b></div></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#burger"/></svg></div><div class="row"><div><h3>Hamburguesa clásica</h3><p>Carne, queso, lechuga y salsa de la casa.</p></div><b>$6</b></div><button class="add" type="button" data-name="Hamburguesa clásica" data-price="6">Agregar</button></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#fries"/></svg></div><div class="row"><div><h3>Papas crujientes</h3><p>Doradas y con sal justa.</p></div><b>$3</b></div><button class="add" type="button" data-name="Papas crujientes" data-price="3">Agregar</button></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#dog"/></svg></div><div class="row"><div><h3>Perro caliente</h3><p>Con mostaza y todos los toppings.</p></div><b>$4</b></div><button class="add" type="button" data-name="Perro caliente" data-price="4">Agregar</button></article>
+      <article class="plato"><div class="ph"><svg class="art" viewBox="0 0 120 100"><use href="#cup"/></svg></div><div class="row"><div><h3>Refresco grande</h3><p>Bien frío, con rellenos disponibles.</p></div><b>$2.5</b></div><button class="add" type="button" data-name="Refresco grande" data-price="2.5">Agregar</button></article>
     </div>
     <p class="nota">Precios de ejemplo.</p>
   </section>
@@ -149,7 +163,7 @@
         <p>Todos los martes, en tienda y para llevar.</p>
         <span class="codigo">CÓDIGO: MORDISCO</span>
       </div>
-      <a class="btn" href="#visitanos">Pedir ahora</a>
+      <a class="btn" href="#menu">Pedir ahora</a>
     </div>
   </section>
 
@@ -164,6 +178,11 @@
   </section>
 </main>
 
+<div class="pedido-bar" id="pb" hidden>
+  <div><strong id="pb-count">0 productos</strong> <span id="pb-total">$0</span></div>
+  <div class="pb-acc"><button class="btn sm out" id="pb-clear" type="button">Vaciar</button><a class="btn sm" id="pb-send" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a></div>
+</div>
+
 <footer class="pie">
   <div class="wrap">
     <div class="cols">
@@ -174,5 +193,35 @@
   </div>
 </footer>
 
+<script>
+const NUM='584120844355', order={};
+const $=id=>document.getElementById(id);
+const pb=$('pb'), btns=document.querySelectorAll('.add');
+const fmt=n=>'$'+(Math.round(n*100)/100);
+
+function render(){
+  const it=Object.entries(order);
+  const n=it.reduce((a,[,i])=>a+i.qty,0), t=it.reduce((a,[,i])=>a+i.qty*i.price,0);
+  pb.hidden=n===0;
+  document.body.classList.toggle('con-pedido',n>0);
+  $('pb-count').textContent=n+(n===1?' producto':' productos');
+  $('pb-total').textContent=fmt(t);
+  const txt='Hola, quiero hacer este pedido en Mordisco (proyecto de concepto):\n'+it.map(([k,i])=>'- '+i.qty+' x '+k).join('\n')+'\nTotal: '+fmt(t);
+  $('pb-send').href='https://wa.me/'+NUM+'?text='+encodeURIComponent(txt);
+  btns.forEach(b=>{const q=order[b.dataset.name]?.qty||0; b.textContent=q?'Agregar otro ('+q+')':'Agregar';});
+}
+btns.forEach(b=>b.addEventListener('click',()=>{
+  const k=b.dataset.name;
+  order[k]=order[k]||{price:parseFloat(b.dataset.price),qty:0};
+  order[k].qty++; render();
+}));
+$('pb-clear').addEventListener('click',()=>{for(const k in order) delete order[k]; render();});
+
+const mb=document.querySelector('.menu-btn'), nav=$('nav');
+function toggle(o){nav.classList.toggle('open',o); mb.setAttribute('aria-expanded',o);}
+mb.addEventListener('click',()=>toggle(!nav.classList.contains('open')));
+nav.addEventListener('click',e=>{if(e.target.tagName==='A') toggle(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') toggle(false);});
+</script>
 </body>
 </html>
